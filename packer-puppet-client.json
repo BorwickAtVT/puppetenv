@@ -1,0 +1,31 @@
+{
+    "builders": [{
+	"type": "virtualbox-iso",
+	"guest_os_type": "FreeBSD_64",
+	"iso_url": "http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-amd64-disc1.iso",
+	"iso_checksum": "9c377b4a4e63443c0b210080694de26133e6a276eddb07c7e00e1c9aebd84109",
+	"iso_checksum_type": "sha256",
+	"ssh_username": "vagrant",
+	"ssh_password": "vagrant",
+	"ssh_wait_timeout": "30s",
+	"shutdown_command": "shutdown -p now",
+	"boot_command": [
+                "<enter>",
+                "<wait10><wait5>",
+                "s",
+                "mkdir -p /tmp/bsdinstall_etc<enter>",
+                "dhclient em0<enter>",
+                "<wait5>",
+                "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig.sh<enter>",
+                "<wait>",
+                "bsdinstall script /tmp/installerconfig<enter>",
+                "<wait10><wait10><wait10>",
+                "shutdown -r now<enter>"
+	]
+    }],
+    "post-processors": [{
+        "type": "vagrant",
+        "keep_input_artifact": true
+	}
+    ]
+}
