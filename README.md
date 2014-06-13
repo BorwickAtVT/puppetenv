@@ -15,3 +15,5 @@ environment.
 
 https://github.com/douglaswth/dt-freebsd-packer/ was extremely
 helpful!
+
+http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html

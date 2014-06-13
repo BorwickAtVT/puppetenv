@@ -21,8 +21,9 @@ cat >> /etc/rc.local <<EOF
 env ASSUME_ALWAYS_YES=YES pkg bootstrap
 env ASSUME_ALWAYS_YES=YES pkg install bash
 env ASSUME_ALWAYS_YES=YES pkg install sudo
+env ASSUME_ALWAYS_YES=YES pkg install wget
 
-echo "%wheel ALL=(ALL) ALL" >> /usr/local/etc/sudoers
+echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /usr/local/etc/sudoers
 
 echo "vagrant::::::vagrant::bash:vagrant" | adduser -f
 

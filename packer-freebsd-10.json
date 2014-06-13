@@ -1,4 +1,10 @@
 {
+    "provisioners": [{
+	"type": "shell",
+	"scripts": [
+	    "scripts/setup.sh"
+	]
+    }],
     "builders": [{
 	"type": "virtualbox-iso",
 	"guest_os_type": "FreeBSD_64",
