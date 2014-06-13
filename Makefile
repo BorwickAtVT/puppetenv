@@ -7,3 +7,4 @@ output-virtualbox-iso/packer-virtualbox-iso.vdi: packer-freebsd-10.json
 
 clean:
 	-rm -r output-virtualbox-iso/
+	-rm packer_virtualbox-iso_virtualbox.box
