@@ -27,7 +27,8 @@
                 "<wait10><wait10><wait10>",
                 "shutdown -r now<enter>"
 	],
-	"http_directory": "http"
+	"http_directory": "http",
+	"guest_additions_mode": "disable"
     }],
     "post-processors": [{
         "type": "vagrant",
