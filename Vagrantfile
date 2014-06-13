@@ -37,8 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     bravo.vm.network "private_network", ip: "10.1.0.3"
 
     bravo.vm.provision 'shell', path: 'vagrant-scripts/setup.sh'
-
-#    bravo.vm.provision 'shell', path: 'vagrant-scripts/puppetclient.sh'
+    bravo.vm.provision 'shell', path: 'vagrant-scripts/puppetclient.sh'
   end
 
 end
