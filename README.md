@@ -1,17 +1,33 @@
-=SUMMARY=
+SUMMARY
+---
 
 The purpose of this project is primarily to build a puppet testing
 environment.
 
-=HOWTO=
+HOWTO
+---
 
 1. Install VirtualBox.
 
 2. Download http://www.packer.io and add the binaries to your PATH.
 
-3. `make`
+3. Install vagrant
 
-=CREDITS=
+4. Configure vagrant-DNS:
+
+    * `vagrant plugin install vagrant-dns`
+
+    * `vagrant dns --install`
+
+5. `make`
+
+6. `vagrant up`
+
+7. If needed, you can run `make clean`. (Note this is more like a
+   "distclean" and will wipe everything.)
+
+CREDITS
+---
 
 https://github.com/douglaswth/dt-freebsd-packer/ was extremely
 helpful!

@@ -1,4 +1,10 @@
-.PHONY: freebsd-vm clean vagrant-box
+.PHONY: freebsd-vm clean vagrant-box up down
+
+up:
+	vagrant up
+
+down:
+	vagrant down
 
 vagrant-box: packer_virtualbox-iso_virtualbox.box
 	vagrant box add freebsd-10 ./packer_virtualbox-iso_virtualbox.box

@@ -2,7 +2,7 @@
     "provisioners": [{
 	"type": "shell",
 	"scripts": [
-	    "scripts/setup.sh"
+	    "packer-scripts/setup.sh"
 	]
     }],
     "builders": [{
