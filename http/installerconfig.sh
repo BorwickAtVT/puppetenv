@@ -13,10 +13,8 @@ pw usermod root -h 0 <<EOF
 vagrant
 EOF
 
-echo "TEST CREATING A FILE" > /TESTFILE
-
-cat >> /TESTFILE2 <<EOF
-What is with the EOFs
+cat >> /TESTFILE <<EOF
+sed -e 's/^# \(%wheel ALL=(ALL) ALL\)$/&/' -i .bak /usr/local/etc/sudoers
 EOF
 
 cat >> /etc/rc.local <<EOF
@@ -24,14 +22,13 @@ env ASSUME_ALWAYS_YES=YES pkg bootstrap
 env ASSUME_ALWAYS_YES=YES pkg install bash
 env ASSUME_ALWAYS_YES=YES pkg install sudo
 
-sed -e 's/^# \(%wheel ALL=(ALL) ALL\)$/&/' -i .bak /usr/local/etc/sudoers
+echo "%wheel ALL=(ALL) ALL" >> /usr/local/etc/sudoers
 
 echo "vagrant::::::vagrant::bash:vagrant" | adduser -f
+
+pw usermod vagrant -G wheel
 
 # poor man's firstboot:
 rm /etc/rc.local
 EOF
 
-cat >> /TESTFILE3 <<EOF
-Hm?
-EOF

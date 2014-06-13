@@ -7,7 +7,7 @@
 	"iso_checksum_type": "sha256",
 	"ssh_username": "vagrant",
 	"ssh_password": "vagrant",
-	"shutdown_command": "shutdown -p now",
+	"shutdown_command": "echo 'vagrant' | sudo -S shutdown -p now",
 	"boot_command": [
                 "<enter>",
                 "<wait10><wait5>",
