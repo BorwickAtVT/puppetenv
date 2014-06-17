@@ -10,6 +10,7 @@ rm -rf /usr/local/etc/puppet/
 
 git clone https://github.com/BorwickAtVT/puppet-config.git /usr/local/etc/puppet/
 ( cd /usr/local/etc/puppet && librarian-puppet install )
+( cd /usr/local/etc/puppet && make )
 
 cat > /usr/local/etc/puppet/puppet.conf <<EOF
 certname = alpha
