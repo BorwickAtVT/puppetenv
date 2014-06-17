@@ -13,12 +13,6 @@ HOWTO
 
 3. Install vagrant
 
-4. Configure vagrant-DNS:
-
-    * `vagrant plugin install vagrant-dns`
-
-    * `vagrant dns --install`
-
 5. `make`
 
 6. `vagrant up`
