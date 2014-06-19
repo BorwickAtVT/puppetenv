@@ -20,6 +20,12 @@ HOWTO
 7. If needed, you can run `make clean`. (Note this is more like a
    "distclean" and will wipe everything.)
 
+UPDATING
+---
+
+If you're using a previous version and are ready to erase what you've
+been working on, run `make clean`.
+
 CREDITS
 ---
 
