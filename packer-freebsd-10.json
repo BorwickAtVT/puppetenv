@@ -2,7 +2,7 @@
     "provisioners": [{
 	"type": "shell",
 	"scripts": [
-	    "packer-scripts/setup.sh"
+	    "packer-scripts/freebsd-10/setup.sh"
 	]
     }],
     "builders": [{
@@ -21,18 +21,21 @@
                 "mkdir -p /tmp/bsdinstall_etc<enter>",
                 "dhclient em0<enter>",
                 "<wait5>",
-                "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig.sh<enter>",
+                "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/freebsd-10/installerconfig.sh<enter>",
                 "<wait>",
                 "bsdinstall script /tmp/installerconfig<enter>",
                 "<wait10><wait10><wait10>",
                 "shutdown -r now<enter>"
 	],
 	"http_directory": "http",
-	"guest_additions_mode": "disable"
+	"guest_additions_mode": "disable",
+	"vm_name": "freebsd-10",
+	"output_directory": "freebsd-10-virtualbox-iso"
     }],
     "post-processors": [{
         "type": "vagrant",
-        "keep_input_artifact": true
+        "keep_input_artifact": true,
+	"output": "freebsd-10.box"
 	}
     ]
 }
