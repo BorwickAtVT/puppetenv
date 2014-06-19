@@ -27,3 +27,5 @@ https://github.com/douglaswth/dt-freebsd-packer/ was extremely
 helpful!
 
 http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html
+
+https://github.com/gwagner/packer-centos/blob/master/http_directory/anaconda-ks.cfg
