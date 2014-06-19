@@ -1,4 +1,6 @@
-.PHONY: clean up down
+.PHONY: boxes clean up down
+
+boxes: centos-6.5.box freebsd-10.box
 
 up:
 	vagrant up
