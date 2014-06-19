@@ -1,0 +1,31 @@
+{
+    "provisioners": [{
+	    "type": "shell",
+	    "scripts": [
+		"packer-scripts/centos-6.5/setup.sh",
+		"packer-scripts/centos-6.5/install-virtualbox-guest-additions.sh"
+	    ]
+    }],
+    "builders": [{
+	"type": "virtualbox-iso",
+	"guest_os_type": "RedHat_64",
+	"iso_url": "http://mirrors.usinternet.com/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-bin-DVD1.iso",
+	"iso_checksum": "c796ab378319393f47b29acd8ceaf21e1f48439570657945226db61702a4a2a1",
+	"iso_checksum_type": "sha256",
+	"ssh_username": "root",
+	"ssh_password": "vagrant",
+	"boot_command": [
+	    "<esc>",
+	    "<wait>linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-6.5/anaconda-ks.cfg<enter>"
+	],
+	"http_directory": "http",
+	"vm_name": "centos-6.5",
+	"output_directory": "centos-6.5-virtualbox-iso"
+    }],
+    "post-processors": [{
+        "type": "vagrant",
+        "keep_input_artifact": true,
+	"output": "centos-6.5.box"
+	}
+    ]
+}

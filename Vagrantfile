@@ -10,7 +10,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "freebsd-10"
 
   # config.vm.network "private_network", ip: "192.168.33.10"
 
@@ -25,19 +24,30 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # end
 
   config.vm.define 'alpha', primary: true do |alpha|
+    alpha.vm.box = "freebsd-10.box"
     alpha.vm.hostname = 'alpha'
     alpha.vm.network "private_network", ip: "10.1.0.2"
 
-    alpha.vm.provision 'shell', path: 'vagrant-scripts/setup.sh'
-    alpha.vm.provision 'shell', path: 'vagrant-scripts/puppetmaster.sh'
+    alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/setup.sh'
+    alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetmaster.sh'
   end
 
   config.vm.define 'bravo' do |bravo|
+    bravo.vm.box = "freebsd-10.box"
     bravo.vm.hostname = 'bravo'
     bravo.vm.network "private_network", ip: "10.1.0.3"
 
-    bravo.vm.provision 'shell', path: 'vagrant-scripts/setup.sh'
-    bravo.vm.provision 'shell', path: 'vagrant-scripts/puppetclient.sh'
+    bravo.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/setup.sh'
+    bravo.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetclient.sh'
+  end
+
+  config.vm.define 'charlie' do |bravo|
+    bravo.vm.box = "centos-6.5.box"
+    bravo.vm.hostname = 'charlie'
+    bravo.vm.network "private_network", ip: "10.1.0.4"
+
+    bravo.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/setup.sh'
+    bravo.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/puppetclient.sh'
   end
 
 end

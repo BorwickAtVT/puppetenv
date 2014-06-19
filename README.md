@@ -20,6 +20,12 @@ HOWTO
 7. If needed, you can run `make clean`. (Note this is more like a
    "distclean" and will wipe everything.)
 
+UPDATING
+---
+
+If you're using a previous version and are ready to erase what you've
+been working on, run `make clean`.
+
 CREDITS
 ---
 
@@ -27,3 +33,5 @@ https://github.com/douglaswth/dt-freebsd-packer/ was extremely
 helpful!
 
 http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html
+
+https://github.com/gwagner/packer-centos/blob/master/http_directory/anaconda-ks.cfg
