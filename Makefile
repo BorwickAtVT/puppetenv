@@ -1,4 +1,4 @@
-.PHONY: freebsd-vm clean vagrant-box up down
+.PHONY: clean up down
 
 up:
 	vagrant up
@@ -6,14 +6,15 @@ up:
 down:
 	vagrant down
 
-vagrant-box: packer_virtualbox-iso_virtualbox.box
-	vagrant box add freebsd-10 ./packer_virtualbox-iso_virtualbox.box
+centos-6.5.box: packer-centos-6.5.json
+	packer build packer-centos-6.5.json
 
-packer_virtualbox-iso_virtualbox.box: packer-freebsd-10.json
+freebsd-10.box: packer-freebsd-10.json
 	packer build packer-freebsd-10.json
 
 clean:
 	-vagrant destroy
-	-vagrant box remove freebsd-10
-	-rm -r output-virtualbox-iso/
-	-rm packer_virtualbox-iso_virtualbox.box
+	-vagrant box remove centos-6.5.box
+	-vagrant box remove freebsd-10.box
+	-rm -r *-iso
+	-rm *.box

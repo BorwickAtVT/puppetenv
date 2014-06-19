@@ -1,5 +1,5 @@
 packer_cache
-output-virtualbox-iso
 .DS_Store
-packer_virtualbox-iso_virtualbox.box
 .vagrant
+*-iso
+*.box
