@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yum -y install kernel-devel
+
 # Mount the disk image
 cd /tmp
 mkdir /tmp/isomount
