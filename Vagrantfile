@@ -13,7 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # config.vm.network "private_network", ip: "192.168.33.10"
 
-  config.vm.synced_folder ".", "/vagrant", :disabled => true
+  config.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
+
 
   # config.vm.provider "virtualbox" do |vb|
   #   # Don't boot with headless mode

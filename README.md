@@ -15,6 +15,10 @@ HOWTO
 
 5. `make`
 
+6. Clone the puppet repo that you want to work on into `puppet-config` e.g.
+
+        git clone https://github.com/BorwickAtVT/puppet-config
+
 6. `vagrant up`
 
 7. If needed, you can run `make clean`. (Note this is more like a
