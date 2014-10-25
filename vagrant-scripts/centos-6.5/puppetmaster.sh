@@ -1,23 +1,18 @@
 #!/bin/sh
 
-wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-sudo rpm -Uvh epel-release-*.rpm
+# from https://docs.puppetlabs.com/guides/install_puppet/install_el.html
+sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+sudo yum -y install puppet-server
 
-# rubygems, gcc, ruby-devel needed for building & installing the gems.
-sudo bash <<EOF
-yum -y install puppet-server
-yum -y install git
-EOF
+sudo gem install bundler
 
-# FIXME: on Centos 6.5, librarian-puppet can't be installed
-#
-# sudo bash <<EOF
-# yum -y install rubygems
-# yum -y install gcc
-# yum -y install ruby-devel
-# EOF
-# gem install bundler
-# gem install librarian-puppet
+# needed to build native libraries:
+sudo yum -y install ruby-devel
+sudo yum -y install gcc
+sudo gem install librarian-puppet -v 1.0.3
+
+sudo gem -y install git
+
 
 # # FIXME: probably shouldn't do this
 # sudo rm -rf /etc/puppet/
