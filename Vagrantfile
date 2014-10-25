@@ -24,12 +24,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # end
 
   config.vm.define 'alpha', primary: true do |alpha|
-    alpha.vm.box = "freebsd-10.box"
+    alpha.vm.box = "centos-6.5.box"
     alpha.vm.hostname = 'alpha'
     alpha.vm.network "private_network", ip: "10.1.0.2"
 
-    alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/setup.sh'
-    alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetmaster.sh'
+    # alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/setup.sh'
+    # alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetmaster.sh'
   end
 
   config.vm.define 'bravo' do |bravo|
