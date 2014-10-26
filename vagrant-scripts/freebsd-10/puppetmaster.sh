@@ -6,7 +6,7 @@ env ASSUME_ALWAYS_YES=yes pkg install puppet
 # gem install librarian-puppet
 
 # FIXME: probably shouldn't do this
-rm -rf /usr/local/etc/puppet/
+mv /usr/local/etc/puppet/ /usr/local/etc/puppet-orig
 
 ln -s /vagrant/puppet-config /usr/local/etc/puppet
 
