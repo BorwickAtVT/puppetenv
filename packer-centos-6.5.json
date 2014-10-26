@@ -3,7 +3,8 @@
 	    "type": "shell",
 	    "scripts": [
 		"packer-scripts/centos-6.5/setup.sh",
-		"packer-scripts/centos-6.5/install-virtualbox-guest-additions.sh"
+		"packer-scripts/centos-6.5/install-virtualbox-guest-additions.sh",
+		"packer-scripts/centos-6.5/lock-file-workaround.sh"
 	    ]
     }],
     "builders": [{
