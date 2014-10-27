@@ -3,7 +3,8 @@
 	    "type": "shell",
 	    "scripts": [
 		"packer-scripts/centos-6.5/setup.sh",
-		"packer-scripts/centos-6.5/install-virtualbox-guest-additions.sh"
+		"packer-scripts/centos-6.5/install-virtualbox-guest-additions.sh",
+		"packer-scripts/centos-6.5/lock-file-workaround.sh"
 	    ]
     }],
     "builders": [{
@@ -20,7 +21,8 @@
 	],
 	"http_directory": "http",
 	"vm_name": "centos-6.5",
-	"output_directory": "centos-6.5-virtualbox-iso"
+	"output_directory": "centos-6.5-virtualbox-iso",
+	"shutdown_command": "echo 'packer' | sudo -S shutdown -P now"
     }],
     "post-processors": [{
         "type": "vagrant",

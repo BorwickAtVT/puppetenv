@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# TODO: not sure why this is an issue but...
+rm -f /etc/gshadow.lock
+
 cat > /etc/hosts <<EOF
 127.0.0.1 localhost
 10.1.0.2 alpha.dev alpha

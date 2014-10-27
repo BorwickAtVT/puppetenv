@@ -16,14 +16,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
 
 
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
+  # `alpha` box can be either CentOS or FreeBSD. Comment out whichever
+  # one you do not want:
+
+  # --- alpha as CentOS:
+  # config.vm.define 'alpha', primary: true do |alpha|
+  #   alpha.vm.box = "centos-6.5.box"
+  #   alpha.vm.hostname = 'alpha'
+  #   alpha.vm.network "private_network", ip: "10.1.0.2"
+
+  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/setup.sh'
+  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/puppetmaster.sh'
   # end
 
+  # --- alpha as FreeBSD:
   config.vm.define 'alpha', primary: true do |alpha|
     alpha.vm.box = "freebsd-10.box"
     alpha.vm.hostname = 'alpha'

@@ -24,6 +24,14 @@ HOWTO
 7. If needed, you can run `make clean`. (Note this is more like a
    "distclean" and will wipe everything.)
 
+SWITCHING TO CENTOS PUPPET MASTER
+---
+
+In `Vagrantfile`, there is a commented-out section for having the Vagrant master
+be a CentOS box rather than a FreeBSD one. If you'd like to use CentOS as the
+puppetmaster, comment out the FreeBSD alpha section and uncomment the CentOS
+alpha section.
+
 UPDATING
 ---
 
