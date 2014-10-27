@@ -2,18 +2,13 @@
 
 env ASSUME_ALWAYS_YES=yes pkg install puppet
 
-# gem install bundler
-# gem install librarian-puppet
-
-# FIXME: probably shouldn't do this
-mv /usr/local/etc/puppet/ /usr/local/etc/puppet-orig
-
+mv /usr/local/etc/puppet /usr/local/etc/puppet-orig
 ln -s /vagrant/puppet-config /usr/local/etc/puppet
 
-# git clone https://github.com/BorwickAtVT/puppet-config.git /usr/local/etc/puppet/
-# ( cd /usr/local/etc/puppet && librarian-puppet install )
-# ( cd /usr/local/etc/puppet && make )
+gem install bundler
+gem install librarian-puppet
 
+cd /usr/local/etc/puppet && librarian-puppet install
 
 cat > /usr/local/etc/puppet/puppet.conf <<EOF
 certname = alpha

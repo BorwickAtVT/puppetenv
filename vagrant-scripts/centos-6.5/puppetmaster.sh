@@ -4,6 +4,9 @@
 rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 yum -y install puppet-server
 
+mv /etc/puppet /etc/puppet-orig
+ln -s /vagrant/puppet-config /etc/puppet
+
 gem install bundler
 
 # needed to build native gem libraries:
@@ -11,8 +14,7 @@ yum -y install ruby-devel
 yum -y install gcc
 gem install librarian-puppet -v 1.0.3
 
-mv /etc/puppet /etc/puppet-orig
-ln -s /vagrant/puppet-config /etc/puppet
+cd /etc/puppet && librarian-puppet install
 
 cat > /etc/puppet/puppet.conf <<EOF
 certname = alpha
