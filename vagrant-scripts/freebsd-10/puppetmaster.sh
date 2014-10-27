@@ -7,6 +7,7 @@ ln -s /vagrant/puppet-config /usr/local/etc/puppet
 
 gem install bundler
 gem install librarian-puppet
+gem install hiera
 
 cd /usr/local/etc/puppet && librarian-puppet install
 

@@ -13,6 +13,7 @@ gem install bundler
 yum -y install ruby-devel
 yum -y install gcc
 gem install librarian-puppet -v 1.0.3
+gem install hiera
 
 cd /etc/puppet && librarian-puppet install
 
