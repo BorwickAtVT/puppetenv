@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # config.vm.network "private_network", ip: "192.168.33.10"
 
-  config.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
+  config.vm.synced_folder ".", "/vagrant", :disabled => true
 
 
   # `alpha` box can be either CentOS or FreeBSD. Comment out whichever
@@ -21,6 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # --- alpha as CentOS:
   # config.vm.define 'alpha', primary: true do |alpha|
+  #   alpha.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
   #   alpha.vm.box = "centos-6.5.box"
   #   alpha.vm.hostname = 'alpha'
   #   alpha.vm.network "private_network", ip: "10.1.0.2"
@@ -31,6 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # --- alpha as FreeBSD:
   config.vm.define 'alpha', primary: true do |alpha|
+    alpha.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
     alpha.vm.box = "freebsd-10.box"
     alpha.vm.hostname = 'alpha'
     alpha.vm.network "private_network", ip: "10.1.0.2"
