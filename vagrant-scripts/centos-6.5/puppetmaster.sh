@@ -36,6 +36,7 @@ EOF
 sudo echo '*' > /etc/puppet/autosign.conf
 
 bash <<EOF
+lokkit -p 8140:tcp
 service puppetmaster start
 chkconfig puppetmaster on
 EOF
