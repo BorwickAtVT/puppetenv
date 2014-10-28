@@ -1,7 +1,6 @@
 #!/bin/sh
 
-wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-sudo rpm -Uvh epel-release-*.rpm
+rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 
 sudo bash <<EOF
 yum -y install puppet
