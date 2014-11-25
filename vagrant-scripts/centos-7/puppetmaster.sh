@@ -39,5 +39,7 @@ EOF
 sudo echo '*' > /etc/puppet/autosign.conf
 
 bash <<EOF
+firewall-cmd --permanent --zone=public --add-port=8140/tcp
+systemctl restart firewalld.service
 systemctl enable puppetmaster.service
 EOF
