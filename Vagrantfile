@@ -20,26 +20,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # one you do not want:
 
   # --- alpha as CentOS:
-  # config.vm.define 'alpha', primary: true do |alpha|
-  #   alpha.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
-  #   alpha.vm.box = "centos-6.5.box"
-  #   alpha.vm.hostname = 'alpha'
-  #   alpha.vm.network "private_network", ip: "10.1.0.2"
-
-  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/setup.sh'
-  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/puppetmaster.sh'
-  # end
-
-  # --- alpha as FreeBSD:
   config.vm.define 'alpha', primary: true do |alpha|
     alpha.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
-    alpha.vm.box = "freebsd-10.box"
+    alpha.vm.box = "centos-7.box"
     alpha.vm.hostname = 'alpha'
     alpha.vm.network "private_network", ip: "10.1.0.2"
 
-    alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/setup.sh'
-    alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetmaster.sh'
+    alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-7/setup.sh'
+    alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-7/puppetmaster.sh'
   end
+
+  # # --- alpha as FreeBSD:
+  # config.vm.define 'alpha', primary: true do |alpha|
+  #   alpha.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
+  #   alpha.vm.box = "freebsd-10.box"
+  #   alpha.vm.hostname = 'alpha'
+  #   alpha.vm.network "private_network", ip: "10.1.0.2"
+
+  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/setup.sh'
+  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetmaster.sh'
+  # end
 
   config.vm.define 'bravo' do |bravo|
     bravo.vm.box = "freebsd-10.box"
@@ -50,13 +50,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     bravo.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetclient.sh'
   end
 
-  config.vm.define 'charlie' do |bravo|
-    bravo.vm.box = "centos-6.5.box"
-    bravo.vm.hostname = 'charlie'
-    bravo.vm.network "private_network", ip: "10.1.0.4"
+  config.vm.define 'charlie' do |charlie|
+    charlie.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
 
-    bravo.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/setup.sh'
-    bravo.vm.provision 'shell', path: 'vagrant-scripts/centos-6.5/puppetclient.sh'
+    charlie.vm.box = "centos-7.box"
+    charlie.vm.hostname = 'charlie'
+    charlie.vm.network "private_network", ip: "10.1.0.4"
+
+    charlie.vm.provision 'shell', path: 'vagrant-scripts/centos-7/setup.sh'
+    charlie.vm.provision 'shell', path: 'vagrant-scripts/centos-7/puppetclient.sh'
   end
 
 end

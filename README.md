@@ -11,7 +11,12 @@ HOWTO
 
 2. Download http://www.packer.io and add the binaries to your PATH.
 
-3. Install vagrant
+3. Install vagrant. **For CentOS 7 NFS support, you need to be using Vagrant > 1.6.5, which as of Nov 2014 means installing from source!**
+
+        # This should get you started:
+        git clone https://github.com/mitchellh/vagrant
+		bundle install
+		sudo gem install
 
 5. `make`
 
@@ -22,7 +27,7 @@ HOWTO
 6. `vagrant up`
 
 7. If needed, you can run `make clean`. (Note this is more like a
-   "distclean" and will wipe everything.)
+   "distclean" and will wipe everything except ISO downloads.)
 
 SWITCHING TO CENTOS PUPPET MASTER
 ---
