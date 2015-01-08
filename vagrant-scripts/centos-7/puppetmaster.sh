@@ -15,7 +15,7 @@ yum -y install gcc
 gem install librarian-puppet
 gem install hiera
 
-cd /etc/puppet && librarian-puppet install
+cd /etc/puppet && /usr/local/bin/librarian-puppet install
 
 cat > /etc/puppet/puppet.conf <<EOF
 certname = alpha
@@ -42,4 +42,5 @@ bash <<EOF
 firewall-cmd --permanent --zone=public --add-port=8140/tcp
 systemctl restart firewalld.service
 systemctl enable puppetmaster.service
+systemctl start puppetmaster.service
 EOF
