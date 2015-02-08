@@ -5,6 +5,9 @@ yum -y install http://yum.theforeman.org/releases/1.7/el7/x86_64/foreman-release
 yum -y install foreman-installer
 foreman-installer
 
+# TODO -- workaround
+echo '#includedir /etc/sudoers.d' >> /etc/sudoers
+
 bash <<EOF
 firewall-cmd --permanent --zone=public --add-port=69/udp
 firewall-cmd --permanent --zone=public --add-port=80/tcp
