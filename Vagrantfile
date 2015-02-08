@@ -27,7 +27,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     alpha.vm.network "private_network", ip: "10.1.0.2"
 
     alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-7/setup.sh'
-    alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-7/puppetmaster.sh'
+    alpha.vm.provision 'shell', path: 'vagrant-scripts/centos-7/theforeman.sh'
+
+    alpha.vm.network :forwarded_port, guest: 80, host: 8080
   end
 
   # # --- alpha as FreeBSD:
