@@ -19,7 +19,7 @@ centos-7.box: packer-centos-7.json
 
 clean:
 	-vagrant destroy
-	-vagrant box remove centos-6.5.box
+	-vagrant box remove centos-*.box
 	-vagrant box remove freebsd-10.box
 	-rm -r *-iso
 	-rm *.box
