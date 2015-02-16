@@ -4,4 +4,5 @@ packer_cache
 *-iso
 *.box
 puppet-config
+hacks.#*
 hacks
