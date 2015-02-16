@@ -1,5 +1,7 @@
 #!/bin/sh
 
+yum makecache fast
+
 # TODO: not sure why this is an issue but...
 rm -f /etc/gshadow.lock
 
