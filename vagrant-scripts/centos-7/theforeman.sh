@@ -20,6 +20,18 @@ service httpd stop
   done
   make
   )
+
+gem install bundler
+
+# needed to build native gem libraries:
+yum -y install ruby-devel
+yum -y install gcc
+gem install librarian-puppet
+gem install hiera
+
+cd /etc/puppet && /usr/local/bin/librarian-puppet install
+
+
 service httpd start
 
 echo '*' > /etc/puppet/autosign.conf
