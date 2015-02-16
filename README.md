@@ -28,7 +28,9 @@ HOWTO
 
         git clone https://github.com/BorwickAtVT/puppet-config
 
-6. `vagrant up`
+6. `vagrant up`. **Note: each file in `puppet-config` is symlinked to
+   alpha:/etc/puppet when `vagrant up` is run. Therefore, if you add a
+   new file it won't get symlinked unless you do so manually.
 
 7. If needed, you can run `make clean`. (Note this is more like a
    "distclean" and will wipe everything except ISO downloads.)
