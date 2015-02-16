@@ -11,12 +11,16 @@ HOWTO
 
 2. Download http://www.packer.io and add the binaries to your PATH.
 
-3. Install vagrant. **For CentOS 7 NFS support, you need to be using Vagrant > 1.6.5, which as of Nov 2014 means installing from source!**
+3. Install vagrant. **For CentOS 7 NFS support, you need to be using Vagrant > 1.6.5.**
 
         # This should get you started:
         git clone https://github.com/mitchellh/vagrant
 		bundle install
 		sudo gem install
+
+4. Install `vagrant-bindfs`:
+
+        vagrant plugin install vagrant-bindfs
 
 5. `make`
 
