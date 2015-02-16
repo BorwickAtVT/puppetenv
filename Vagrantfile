@@ -32,17 +32,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     alpha.vm.network :forwarded_port, guest: 80, host: 8080
   end
 
-  # # --- alpha as FreeBSD:
-  # config.vm.define 'alpha', primary: true do |alpha|
-  #   alpha.vm.synced_folder ".", "/vagrant", :nfs => true, id: "vagrant-root"
-  #   alpha.vm.box = "freebsd-10.box"
-  #   alpha.vm.hostname = 'alpha'
-  #   alpha.vm.network "private_network", ip: "10.1.0.2"
-
-  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/setup.sh'
-  #   alpha.vm.provision 'shell', path: 'vagrant-scripts/freebsd-10/puppetmaster.sh'
-  # end
-
   config.vm.define 'bravo' do |bravo|
     bravo.vm.box = "freebsd-10.box"
     bravo.vm.hostname = 'bravo'
