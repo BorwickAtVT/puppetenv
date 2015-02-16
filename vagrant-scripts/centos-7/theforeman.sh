@@ -11,14 +11,18 @@ foreman-installer --foreman-admin-password=vagrant \
 		  --enable-foreman-compute-ec2 \
 		  --enable-foreman-compute-gce
 
-# link puppet dir and pull in Foreman stuff
-mv /etc/puppet/ /etc/puppet-orig/
-mkdir /etc/puppet
-git clone /vagrant/puppet-config/ /etc/puppet/
-rsync -az /etc/puppet-orig/ /etc/puppet/
+# Symlink from /vagrant/puppet-config, one file at a time.
+service httpd stop
+( cd /etc/puppet
+  rm -rf modules
+  for i in /vagrant/puppet-config/*; do
+      ln -s "$i" /etc/puppet
+  done
+  make
+  )
+service httpd start
 
 echo '*' > /etc/puppet/autosign.conf
-
 
 bash <<EOF
 firewall-cmd --permanent --zone=public --add-port=69/udp
@@ -28,3 +32,6 @@ firewall-cmd --permanent --zone=public --add-port=8140/tcp
 
 systemctl restart firewalld.service
 EOF
+
+# Run agent once so it gets registered:
+puppet agent -t
