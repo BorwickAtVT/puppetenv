@@ -11,6 +11,14 @@ foreman-installer --foreman-admin-password=vagrant \
 		  --enable-foreman-compute-ec2 \
 		  --enable-foreman-compute-gce
 
+# needed to build native gem libraries:
+gem install bundler
+yum -y install ruby-devel
+yum -y install gcc
+gem install librarian-puppet
+gem install hiera
+
+
 # Symlink from /vagrant/puppet-config, one file at a time.
 service httpd stop
 ( cd /etc/puppet
@@ -20,16 +28,6 @@ service httpd stop
   done
   make
   )
-
-gem install bundler
-
-# needed to build native gem libraries:
-yum -y install ruby-devel
-yum -y install gcc
-gem install librarian-puppet
-gem install hiera
-
-cd /etc/puppet && /usr/local/bin/librarian-puppet install
 
 
 service httpd start
